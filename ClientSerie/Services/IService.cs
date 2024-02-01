@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,7 +15,7 @@ namespace ClientSerie.Services
 
         Task<bool> PostSerieAsync(string nomControleur, Serie serie);
 
-        Task<bool> PutSerieAsync(string nomControleur, Serie serie);
+        Task<bool> PutSerieAsync(string nomControleur, int id, Serie serie);
 
         Task<bool> DeleteSerieAsync(string nomControleur, int id);
 

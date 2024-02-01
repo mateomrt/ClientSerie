@@ -101,16 +101,15 @@ namespace ClientSerie.Services.Tests
         {
             Serie serieTest = new Serie
             {
-                Titre = "test Titre",
+                Titre = "test123",
                 Resume = "test Resume",
                 Nbsaisons = 5,
                 Nbepisodes = 184,
                 Anneecreation = 2001,
-                Network = "test"
+                Network = "ABC (US)"
             };
             WSService service = new WSService("https://apiseriesmarmat.azurewebsites.net/api/");
             var result = service.PostSerieAsync("series", serieTest).Result;
-
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOfType(result, typeof(bool));
@@ -122,7 +121,20 @@ namespace ClientSerie.Services.Tests
         [TestMethod()]
         public void PutSerieAsyncTest()
         {
-            Assert.Fail();
+            WSService service = new WSService("https://apiseriesmarmat.azurewebsites.net/api/");
+            var result = service.GetSerieAsync("series", 143).Result;
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(Serie));
+
+            result.Resume = result.Resume + " change";
+
+            var putResult = service.PutSerieAsync("series", result.Serieid ,result).Result;
+
+            Assert.IsNotNull(putResult);
+            Assert.IsInstanceOfType(putResult, typeof(bool));
+
+
+            Assert.AreEqual(true, putResult);
         }
     }
 }

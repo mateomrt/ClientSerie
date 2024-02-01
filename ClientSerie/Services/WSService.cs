@@ -53,17 +53,11 @@ namespace ClientSerie.Services
         {
             try
             {
-                string jsonSerie = JsonSerializer.Serialize(serie);
-                StringContent stringContent = new StringContent(jsonSerie, Encoding.UTF8, "application/json");
-                var response =  await httpClient.PostAsJsonAsync(nomControleur, stringContent);
+                var response =  await httpClient.PostAsJsonAsync(nomControleur, serie);
                 if (response.IsSuccessStatusCode)
-                {
                     return true;
-                }
                 else
-                {
                     return false;
-                }
 
             }
             catch (Exception)
@@ -72,14 +66,40 @@ namespace ClientSerie.Services
             }
         }
 
-        public async Task<bool> PutSerieAsync(string nomControleur, Serie serie)
+        public async Task<bool> PutSerieAsync(string nomControleur,int id, Serie serie)
         {
-            return false;
+            try
+            {
+                string lien = string.Concat(nomControleur, "/", id);
+                var response = await httpClient.PutAsJsonAsync(lien, serie);
+                if (response.IsSuccessStatusCode)
+                    return true;
+                else
+                    return false;
+
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public async Task<bool> DeleteSerieAsync(string nomControleur, int id)
         {
-            return false;
+            try
+            {
+                string lien = string.Concat(nomControleur, "/", id);
+                var response = await httpClient.DeleteAsync(lien);
+                if (response.IsSuccessStatusCode)
+                    return true;
+                else
+                    return false;
+
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

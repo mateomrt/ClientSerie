@@ -1,4 +1,7 @@
-﻿using Microsoft.UI.Xaml;
+﻿using ClientSerie.ViewModels;
+using ClientSerie.Views;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
@@ -26,6 +29,11 @@ namespace ClientSerie
     /// </summary>
     public partial class App : Application
     {
+        public static FrameworkElement MainRoot { get; private set; }
+
+
+        public ServiceProvider Services { get; }
+        
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -33,7 +41,15 @@ namespace ClientSerie
         public App()
         {
             this.InitializeComponent();
+
+            ServiceCollection services = new ServiceCollection();
+
+            services.AddTransient<AjoutSerieViewModel>();
+
+            Services = services.BuildServiceProvider();
         }
+
+        public new static App Currrent => (App)Application.Current;
 
         /// <summary>
         /// Invoked when the application is launched.
@@ -42,7 +58,12 @@ namespace ClientSerie
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
             m_window = new MainWindow();
+            Frame rootFrame = new Frame();
+            this.m_window.Content = rootFrame;
             m_window.Activate();
+            rootFrame.Navigate(typeof(AjoutSerie));
+
+            MainRoot = m_window.Content as FrameworkElement;
         }
 
         private Window m_window;
