@@ -46,6 +46,7 @@ namespace ClientSerie
             ServiceCollection services = new ServiceCollection();
 
             services.AddTransient<AjoutSerieViewModel>();
+            services.AddTransient<ModificationSerieViewModel>();
 
             Services = services.BuildServiceProvider();
         }
@@ -64,7 +65,7 @@ namespace ClientSerie
             Frame rootFrame = new Frame();
             this.m_window.Content = rootFrame;
             m_window.Activate();
-            rootFrame.Navigate(typeof(AjoutSerie));
+            rootFrame.Navigate(typeof(ModificationSerie));
 
             MainRoot = m_window.Content as FrameworkElement;
 
