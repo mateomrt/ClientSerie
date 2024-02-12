@@ -14,8 +14,20 @@ namespace ClientSerie.ViewModels
 {
     public class AjoutSerieViewModel : SerieViewModel
     {
-        
 
+        private Serie serieToAdd;
+        public Serie SerieToAdd
+        {
+            get
+            {
+                return serieToAdd;
+            }
+            set
+            {
+                serieToAdd = value;
+                OnPropertyChanged();
+            }
+        }
         public IRelayCommand BtnAjoutSerie { get; }
         public AjoutSerieViewModel()
         {

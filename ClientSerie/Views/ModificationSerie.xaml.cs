@@ -1,3 +1,5 @@
+using ClientSerie.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -26,6 +28,7 @@ namespace ClientSerie.Views
         public ModificationSerie()
         {
             this.InitializeComponent();
+            DataContext = App.Currrent.Services.GetService<ModificationSerieViewModel>();
         }
     }
 }

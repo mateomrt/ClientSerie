@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ClientSerie.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ClientSerie.ViewModels;
 
-namespace ClientSerie.Views.Tests
+namespace ClientSerieTests.ViewModels
 {
     [TestClass()]
     public class AjoutSerieTests

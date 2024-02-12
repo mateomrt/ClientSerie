@@ -27,19 +27,7 @@ namespace ClientSerie.ViewModels
             }
         }
 
-        private Serie serieToAdd;
-        public Serie SerieToAdd
-        {
-            get
-            {
-                return serieToAdd;
-            }
-            set
-            {
-                serieToAdd = value;
-                OnPropertyChanged();
-            }
-        }
+        
 
         private List<Serie> lesSeries;
         public List<Serie> LesSeries
@@ -59,16 +47,7 @@ namespace ClientSerie.ViewModels
         {
             Service = new WSService("https://apiseriesmarmat.azurewebsites.net/api/");
 
-            List<Serie> result = await Service.GetSeriesAsync("series");
-
-            if (result == null)
-            {
-                await MessageAsync("API non disponible !", "Erreur");
-            }
-            else
-            {
-                LesSeries = new List<Serie>(result);
-            }
+            
 
 
         }
