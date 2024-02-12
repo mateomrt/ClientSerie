@@ -35,6 +35,7 @@ namespace ClientSerie.ViewModels
         }
         public async void AjoutSerie()
         {
+            
             await MessageAsync("Problème chef !", "Erreur");
             
 

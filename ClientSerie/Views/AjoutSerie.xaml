@@ -100,7 +100,7 @@
             x:Name="TboxChaine"
             Width="300"
             Margin="0,10,0,10"
-            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.AlignsxHorizontalCenterWithPanel="True"
             RelativePanel.Below="TblockChaine"
             Text="{Binding SerieToAdd.Network, Mode=TwoWay}" />
 
